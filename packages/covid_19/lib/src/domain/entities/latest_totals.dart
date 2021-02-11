@@ -4,9 +4,9 @@ import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
 ///Class to represent the totals status of the covid19 data
-class Totals extends Equatable {
+class LatestTotals extends Equatable {
   ///Represents the statuses of the different totals from the covid 19 totals
-  Totals({
+  LatestTotals({
     @required this.confirmed,
     @required this.recovered,
     @required this.critical,

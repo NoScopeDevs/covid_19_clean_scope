@@ -1,16 +1,16 @@
 import 'package:meta/meta.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/totals.dart';
+import '../../domain/entities/latest_totals.dart';
 
-part 'totals_model.g.dart';
+part 'latest_totals_model.g.dart';
 
 @JsonSerializable(nullable: false)
 
 ///Model class that performs json parsing operations
-class TotalsModel extends Totals {
+class LatestTotalsModel extends LatestTotals {
   ///Totals model have the information of json parsed models
-  TotalsModel({
+  LatestTotalsModel({
     @required int confirmed,
     @required int recovered,
     @required int critical,
@@ -27,9 +27,9 @@ class TotalsModel extends Totals {
         );
 
   ///Get a `TotalsModel` from json
-  factory TotalsModel.fromJson(Map<String, dynamic> json) =>
-      _$TotalsModelFromJson(json);
+  factory LatestTotalsModel.fromJson(Map<String, dynamic> json) =>
+      _$LatestTotalsModelFromJson(json);
 
   ///Get a `Map<String,dyanamic>` from `TotalsModel`
-  Map<String, dynamic> toJson() => _$TotalsModelToJson(this);
+  Map<String, dynamic> toJson() => _$LatestTotalsModelToJson(this);
 }
