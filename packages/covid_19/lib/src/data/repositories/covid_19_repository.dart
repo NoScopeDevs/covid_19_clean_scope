@@ -1,5 +1,6 @@
 import 'package:covid_19/src/domain/entities/latest_totals.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:errors/errors.dart';
 
 import 'package:meta/meta.dart';
@@ -17,13 +18,14 @@ class Covid19Repository implements ICovid19Repository {
   }) : assert(remoteDataSource != null);
 
   ///Remote that source that makes api call
-  final RemoteDataSource remoteDataSource;
+  final IRemoteDataSource remoteDataSource;
 
   @override
   Future<Either<Failure, LatestTotals>> getTotalsData() {
-    throw UnimplementedError();
+    return getCovidData(remoteDataSource.getCovidLatestData);
   }
 
+  ///Get the latest data on covid cases
   Future<Either<Failure, LatestTotals>> getCovidData(
     _GetLatestTotals getLatestTotals,
   ) async {
@@ -31,6 +33,8 @@ class Covid19Repository implements ICovid19Repository {
       final latestTotals = await getLatestTotals();
       return Right(latestTotals);
     } on ServerException {
+      return Left(ServerFailure());
+    } on DioError {
       return Left(ServerFailure());
     }
   }

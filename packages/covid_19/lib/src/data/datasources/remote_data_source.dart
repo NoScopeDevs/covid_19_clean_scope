@@ -1,6 +1,4 @@
 // ignore_for_file: public_member_api_docs
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:errors/errors.dart';
 
@@ -32,7 +30,7 @@ class RemoteDataSource implements IRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      return LatestTotalsModel.fromJson(json.decode(response.data));
+      return LatestTotalsModel.fromJson(response.data[0]);
     } else {
       throw ServerException();
     }

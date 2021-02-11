@@ -1,8 +1,8 @@
 // Export Entities
-// TODO: Export entities
+export 'entities/latest_totals.dart';
 
 // Export Repositories
 export 'repositories/icovid_19_repository.dart';
 
 // Export Use Cases
-// TODO: Export use cases
+export 'usecases/get_covid_latest_totals.dart';
